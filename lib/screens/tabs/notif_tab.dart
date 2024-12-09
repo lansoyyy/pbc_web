@@ -11,7 +11,7 @@ class NotifTab extends StatelessWidget {
     return StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
             .collection('Records')
-            // .where('status', isEqualTo: 'Pending')
+            .where('status', isEqualTo: 'Pending')
             .snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasError) {
