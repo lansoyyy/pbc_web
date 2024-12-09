@@ -11,7 +11,7 @@ class NotifTab extends StatelessWidget {
     return StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
             .collection('Records')
-            .where('status', isEqualTo: 'Pending')
+            // .where('status', isEqualTo: 'Pending')
             .snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasError) {
@@ -83,7 +83,9 @@ class NotifTab extends StatelessWidget {
                   },
                   leading: TextWidget(text: '${index + 1}.', fontSize: 18),
                   title: TextWidget(
-                      text: 'Wants to redeem pancit cantoon', fontSize: 18),
+                      text:
+                          '${data.docs[index]['myname']} wants to redeem ${data.docs[index]['name']}',
+                      fontSize: 18),
                 );
               },
             ),
